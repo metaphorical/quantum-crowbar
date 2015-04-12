@@ -1,0 +1,25 @@
+{
+    "runFunctionalTests" : true,
+    "requireLogin" : false,
+    "responsiveTest" : true,
+    "useGecko" : false,
+    "specsDir" : "specs",
+    "loginLink" : "login",
+    "loginForm" : "form[name='login']",
+    "loginCreds" : {
+        "username": "",
+        "password": ""
+    },
+    "hosts" : {
+        "alpha": "http://www.google.com",
+        "beta": "http://www.yahoo.com",
+        "prod": "http://www.twitter.com"
+    },
+    "pages" : [
+        {
+            "link": "/",
+            "name" : "root",
+            "method" : "get"
+        }
+    ]
+}
