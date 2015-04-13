@@ -1,8 +1,45 @@
 [
       {
-        "name": "iphone6-portrait",
+        "name": "samsung-galaxy_y-portrait",
         "viewport": {
-              "width": 375,
-              "height": 667}
+              "width": 240,
+              "height": 320}
+      },
+      {
+        "name": "samsung-galaxy_y-landscape",
+        "viewport": {
+              "width": 320,
+              "height": 240}
+      },
+      {
+        "name": "htc-one-portrait",
+        "viewport": {
+              "width": 360,
+              "height": 640}
+      },
+      {
+        "name": "htc-one-landscape",
+        "viewport": {
+              "width": 640,
+              "height": 360}
+      },
+      {
+        "name": "desktop-standard-sxga-plus",
+        "viewport": {
+              "width": 1400,
+               "height": 1050}
+      },
+      {
+        "name": "desktop-standard-uxga",
+        "viewport": {
+              "width": 1600,
+               "height": 1200}
+      },
+      {
+        "name": "desktop-standard-wuxga",
+        "viewport": {
+              "width": 1920,
+               "height": 1200}
       }
-]
+
+    ]
