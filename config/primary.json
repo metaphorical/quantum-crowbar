@@ -1,9 +1,15 @@
 {
     "runFunctionalTests" : true,
-    "requireLogin" : false,
     "responsiveTest" : true,
+    "pagePerfAnalysis" : true,
+    "pagePerfTasks" : {
+        "appcache": true,
+        "performance": true,
+        "cssproperties": true
+    },
+    "requireLogin" : false,
     "useGecko" : false,
-    "specsDir" : "specs",
+    "funcSpecsDir" : "specs",
     "loginLink" : "login",
     "loginForm" : "form[name='login']",
     "loginCreds" : {
@@ -12,12 +18,13 @@
     },
     "hosts" : {
         "alpha": "http://www.google.com",
-        "beta": "http://www.yahoo.com",
+        "beta": "http://www.yelp.com",
         "prod": "http://www.twitter.com"
     },
     "pages" : [
         {
             "link": "/",
+            "link": "",
             "name" : "root",
             "method" : "get"
         }

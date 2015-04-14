@@ -11,7 +11,7 @@ var snap = function(options, casperContext) {
     var link = options.link;
     var prefix = options.prefix || '';
     // For page screenshot to be accurate we might want to wait for async loaded images to load
-    var waitTime = options.wait || 5000;
+    var waitTime = options.wait || 1000;
     var snapsFolder = options.folder || 'screenshots/';
 
       casperContext.then(function() {

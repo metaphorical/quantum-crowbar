@@ -26,16 +26,16 @@ var viewportName = '';
 // Creating page load network logs
 casper.options.onResourceRequested = function (c, reqData, req) {
     var text = new Date() + ': requested: ' + JSON.stringify(reqData, undefined, 4) + '\n';
-    var path = './logs/' + (viewportLoop ? viewportName : '') + '-app-test.log';
+    var path = './reports/' + (viewportLoop ? viewportName : '') + '-app-test.log';
     toFile(path, text);
 };
 
 casper.options.onResourceReceived = function (c, res) {
     var text = new Date() + ': received: ' + JSON.stringify(res, undefined, 4) + '\n';
 
-    var path = './logs/' + (viewportLoop ? viewportName : '') + '-app-test.log';
+    var path = './reports/' + (viewportLoop ? viewportName : '') + '-app-test.log';
 
-    var pathNon200 = './logs/' + (viewportLoop ? viewportName : '') + '-non-200.log';
+    var pathNon200 = './reports/' + (viewportLoop ? viewportName : '') + '-non-200.log';
 
     if (res.status < 200 || res.status >= 300) {
         toFile(pathNon200, text);
@@ -87,9 +87,9 @@ casper.each(pages, function(casper, page) {
       casper.thenOpen( address + page.link, function() {
         if (errCount > 0) {
               var errText = "Warning! Received " + errCount + " responses with non-success status code";
-              casper.echo(errText, 'error');
+              casper.log(errText, 'error');
           } else {
-              casper.echo("Resources for the " + page.name + " loaded cleanly", 'info');
+              casper.log("Resources for the " + page.name + " loaded cleanly", 'info');
           }
       });
   }
