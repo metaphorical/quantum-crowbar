@@ -7,6 +7,7 @@ var colors = require('colors');
 var toFile = require('../plugins/to-file.js');
 var phantomPath = './node_modules/.bin/phantomjs';
 var confessPath = './plugins/confess/confess.js';
+var yslowPath = './plugins/yslow.js';
 
 var runPhantomChildProcess = function(args) {
     var phantomProc = childProcess.execFile(phantomPath, args, function(err, stdout, stderr) {
@@ -36,6 +37,17 @@ var performanceAnalysis = function(config) {
                       pageLink,
                       'performance'
                     ];
+        var yslowArgs = [
+                      yslowPath,
+                      '-i',
+                      'grade', 
+                      '-threshold', 
+                      '"B"',
+                      '-f', 
+                      'tap',
+                      pageLink
+                    ];
+
         console.log("\nGenerating appcache manifest of:".bold);
         console.log(page.name.yellow + "\n");
         var confessAppcache = runPhantomChildProcess(appcacheArgs);
@@ -45,6 +57,8 @@ var performanceAnalysis = function(config) {
         confessAppcache.stdout.on('data', function(data) {
             toFile('./reports/cq-' + config.hosts[process.argv[2]].replace(/[^\w]/g,'') + '-' + page.name +'.appcache', data.toString());
         });
+
+
         console.log("\nGenerating performance report for:".bold);
         console.log(page.name.yellow + "\n");
         var confessPerf = runPhantomChildProcess(performanceArgs);
@@ -54,6 +68,19 @@ var performanceAnalysis = function(config) {
         confessPerf.stdout.on('data', function(data) {
             toFile('./reports/cq-' + config.hosts[process.argv[2]].replace(/[^\w]/g,'') + '-' + page.name +'-performance.log', data.toString());
         });
+
+
+        console.log("\nGenerating yslow report for:".bold);
+        console.log(page.name.yellow + "\n");
+        var yslowTask = runPhantomChildProcess(yslowArgs);
+        // Detaching child process event loop from parents event loop
+        yslowTask.unref();
+
+        yslowTask.stdout.on('data', function(data) {
+            toFile('./reports/cq-' + config.hosts[process.argv[2]].replace(/[^\w]/g,'') + '-' + page.name +'-yslow.tap', data.toString());
+        });
+
+
     });
 };
 
