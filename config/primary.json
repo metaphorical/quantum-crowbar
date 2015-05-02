@@ -1,4 +1,6 @@
 {
+    "appName": "QC",
+    "reportFolder": false,
     "runFunctionalTests" : true,
     "responsiveTest" : true,
     "pagePerfAnalysis" : true,

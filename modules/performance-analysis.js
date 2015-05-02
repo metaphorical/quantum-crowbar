@@ -24,9 +24,11 @@ var runPhantomChildProcess = function(args) {
 var performanceAnalysis = function(config) {
     console.log("Performance analyses started".yellow);
     var pages = config.pages;
+    var reportFolder = config.reportFolder || "./reports/"
 
     _.each(pages, function(page) {
         var pageLink = config.hosts[process.argv[2]] + page.link;
+        var reportFile = reportFolder + config.appName + '-' + process.argv[2] + '-' + page.name;
         var appcacheArgs = [
                       confessPath,
                       pageLink,
@@ -55,7 +57,7 @@ var performanceAnalysis = function(config) {
         confessAppcache.unref();
 
         confessAppcache.stdout.on('data', function(data) {
-            toFile('./reports/cq-' + config.hosts[process.argv[2]].replace(/[^\w]/g,'') + '-' + page.name +'.appcache', data.toString());
+            toFile(reportFile +'.appcache', data.toString());
         });
 
 
@@ -66,7 +68,7 @@ var performanceAnalysis = function(config) {
         confessPerf.unref();
 
         confessPerf.stdout.on('data', function(data) {
-            toFile('./reports/cq-' + config.hosts[process.argv[2]].replace(/[^\w]/g,'') + '-' + page.name +'-performance.log', data.toString());
+            toFile(reportFile +'-performance.log', data.toString());
         });
 
 
@@ -77,7 +79,7 @@ var performanceAnalysis = function(config) {
         yslowTask.unref();
 
         yslowTask.stdout.on('data', function(data) {
-            toFile('./reports/cq-' + config.hosts[process.argv[2]].replace(/[^\w]/g,'') + '-' + page.name +'-yslow.tap', data.toString());
+            toFile(reportFile + '-yslow.tap', data.toString());
         });
 
 
