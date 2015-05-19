@@ -43,8 +43,8 @@ casper.start(address + 'login', function (){
                 console.log("Resources for the page loaded cleanly");
             }
             this.fill('form[name="login"]', {
-                username: 'xnaud@vast.com',
-                password: 'qa123'
+                username: 'rastko.vukasinovic@gmail.com',
+                password: 'smt123'
             }, true);
 });
 
