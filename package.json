@@ -19,6 +19,7 @@
     "jasmine-tapreporter": "^0.2.2",
     "lodash": "^3.6.0",
     "nock": "^0.52.2",
+    "pa11y": "^1.7.0",
     "phantomjs": "^1.9.13",
     "slimerjs": "^0.9.2"
   }

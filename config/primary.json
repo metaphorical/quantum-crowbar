@@ -1,9 +1,10 @@
 {
     "appName": "QC",
     "reportFolder": false,
-    "runFunctionalTests" : true,
-    "responsiveTest" : true,
-    "pagePerfAnalysis" : true,
+    "runFunctionalTests" : false,
+    "responsiveTest" : false,
+    "pagePerfAnalysis" : false,
+    "atTest": true,
     "pagePerfTasks" : {
         "appcache": true,
         "performance": true,
@@ -20,13 +21,12 @@
     },
     "hosts" : {
         "alpha": "http://www.google.com",
-        "beta": "http://www.yelp.com",
+        "beta": "http://www.yelp.com/",
         "prod": "http://www.twitter.com"
     },
     "pages" : [
         {
             "link": "/",
-            "link": "",
             "name" : "root",
             "method" : "get"
         }

@@ -4,6 +4,7 @@ var path = require('path');
 
 var functionalTestRunner = require('./modules/functional-test-runner.js');
 var performanceAnalysis = require('./modules/performance-analysis.js');
+var accessibilityTest = require('./modules/accessibility-tests.js');
 
 // Setting up env vars for headless browsers
 process.env.PHANTOMJS_EXECUTABLE = __dirname + '/node_modules/.bin/phantomjs';
@@ -26,4 +27,11 @@ if (config.pagePerfAnalysis) {
     performanceAnalysis(config);
 } else {
    console.log("Skipping page performance analysis".magenta);
+}
+
+// Running page performance analysis
+if (config.atTest) {
+    accessibilityTest(config);
+} else {
+   console.log("Skipping page accessibility tests".magenta);
 }
